@@ -55,7 +55,7 @@ class Battleship{
                 $this->tableroJugador2[$fila][$columna] = 2;
                 $this->disparosJugador1[$fila][$columna] = 2;
             }else{//no hay un barco ahi
-                $this->disparosJugador1[$fila][$columna] = -1;
+                $this->disparosJugador1[$fila][$columna] = 9;
             }
             $this->turno = 2;
             return $this->disparosJugador1;
@@ -64,7 +64,7 @@ class Battleship{
                 $this->tableroJugador1[$fila][$columna] = 2;
                 $this->disparosJugador2[$fila][$columna] = 2;
             }else{//no hay un barco ahi
-                $this->disparosJugador2[$fila][$columna] = -1;
+                $this->disparosJugador2[$fila][$columna] = 9;
             }
             $this->turno = 1;
             return $this->disparosJugador2;
@@ -103,14 +103,14 @@ class Battleship{
         $jugador2 = 0;
         foreach($this->disparosJugador1 as $i => $v_i){
             foreach($this->disparosJugador1[$i] as $j => $v_j){
-                if ($v_j == 2 || $v_j == -1){
+                if ($v_j == 2 || $v_j == 9){
                     $jugador1 = $jugador1 + 1;
                 }
             }
         }
         foreach($this->disparosJugador2 as $i => $v_i){
             foreach($this->disparosJugador2[$i] as $j => $v_j){
-                if ($v_j == 2 || $v_j == -1){
+                if ($v_j == 2 || $v_j == 9){
                     $jugador2 = $jugador2 + 1;
                 }
             }
@@ -118,6 +118,3 @@ class Battleship{
         return ($jugador1+$jugador2);
     }
 }
-
-$juego = new Battleship(20,10,5);
-$juego->colocarNave(1,2,3);
